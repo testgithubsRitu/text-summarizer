@@ -11,27 +11,27 @@ a map-reduce strategy, with a CLI, a Streamlit web UI and a **ROUGE evaluation**
           ─► summarise each chunk ─► join partial summaries ─► (repeat if still too long) ─► final summary
 ```
 
-- **Why chunk?** DistilBART reads at most 1024 tokens. Longer input would be silently truncated.
-- **Why tokens, not words?** Transformers read sub-word tokens; counting with the model's tokenizer
-  (`src/chunking.py`) keeps every chunk inside the window.
-- **Why sentence boundaries?** Cutting mid-sentence degrades summary quality.
-- Generation is deterministic (`do_sample=False`), so the same input gives the same summary.
+* **Why chunk?** DistilBART reads at most 1024 tokens. Longer input would be silently truncated.
+* **Why tokens, not words?** Transformers read sub-word tokens; counting with the model's tokenizer
+(`src/chunking.py`) keeps every chunk inside the window.
+* **Why sentence boundaries?** Cutting mid-sentence degrades summary quality.
+* Generation is deterministic (`do\_sample=False`), so the same input gives the same summary.
 
 ## Quick start
 
 ```bash
-git clone <your-repo-url> && cd text-summarizer
-python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
+git clone <https://github.com/testgithubsRitu/text-summarizer> \&\& cd text-summarizer
+python -m venv .venv \&\& source .venv/bin/activate      # Windows: .venv\\Scripts\\activate
 pip install -r requirements.txt
 
-python cli.py data/sample_article.txt                  # first run downloads the model (~1.2 GB)
+python cli.py data/sample\_article.txt                  # first run downloads the model (\~1.2 GB)
 streamlit run app.py                                   # web UI: paste text or upload a .txt file
 ```
 
 ## Evaluation
 
 ```bash
-python -m src.evaluate data/eval_sample.csv
+python -m src.evaluate data/eval\_sample.csv
 ```
 
 Reads a CSV with `text` and `reference` columns, generates summaries and reports ROUGE-1/2/L F-scores per
@@ -61,7 +61,8 @@ data/                sample article and tiny eval CSV
 
 ## Limitations and next steps
 
-- Abstractive models can state things not in the source; verify important summaries.
-- DistilBART is tuned for English news-style text; try `facebook/bart-large-cnn` or `google/pegasus-xsum`
-  by changing `DEFAULT_MODEL` in `src/summarizer.py`.
-- Next: compare models on ROUGE, fine-tune a small model on a custom dataset, add a length-controlled summary option.
+* Abstractive models can state things not in the source; verify important summaries.
+* DistilBART is tuned for English news-style text; try `facebook/bart-large-cnn` or `google/pegasus-xsum`
+by changing `DEFAULT\_MODEL` in `src/summarizer.py`.
+* Next: compare models on ROUGE, fine-tune a small model on a custom dataset, add a length-controlled summary option.
+
