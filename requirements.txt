@@ -1,0 +1,7 @@
+transformers>=4.40.0
+torch>=2.1.0
+sentencepiece>=0.1.99
+pandas>=2.0.0
+rouge-score>=0.1.2
+streamlit>=1.33.0
+pytest>=8.0.0
